@@ -67,6 +67,25 @@ function merge3(larr, rarr) {
             arr.push(rarr.shift());
         }
     }
-    return [...arr, larr, rarr];
+    return [...arr, ...larr, ...rarr];
 }
 
+function mergeSort3(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    
+    let mid = arr.length / 2;
+
+    let larr = arr.splice(0, mid);
+
+    return merge3(mergeSort3(larr), mergeSort3(arr));
+}
+
+let unsorted3 = [];
+for (let i = 0; i < 100; i++) {
+    let num = Math.floor(Math.random() * 10);
+    unsorted3.push(num);
+}
+console.log(unsorted3);
+console.log(mergeSort3(unsorted3));
