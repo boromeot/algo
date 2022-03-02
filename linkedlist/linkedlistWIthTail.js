@@ -20,6 +20,19 @@ class LinkedList {
         }
         newHead.next = this.head;
         this.head = newHead;
+        return newHead;
+    }
+
+    addToTail(val) {
+        const newTail = new Node(val);
+        if (!this.head) {
+            this.head = newTail;
+            this.tail = newTail;
+            return newTail;
+        }
+        this.tail.next = newTail;
+        this.tail = newTail;
+        return newTail;
     }
 }
 
@@ -28,4 +41,6 @@ console.log(ll);
 ll.addToHead(3);
 ll.addToHead(2);
 ll.addToHead(1);
+console.log(ll);
+ll.addToTail(4);
 console.log(ll);
