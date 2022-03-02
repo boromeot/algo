@@ -1,19 +1,48 @@
 class Node {
-    constructor(val) {
+    constructor(val, next) {
         this.val = val;
-        this.next = null;
+        this.next = next;
     }
 }
 
 class LinkedList {
-    constructor() {
+    constructor(head, tail) {
         this.head = null;
     }
+
+    addToHead(headVal) {
+        const newHead = new Node(headVal);
+        newHead.next = this.head;
+        this.head = newHead;
+    }
+
+    addToTail(tailVal) {
+        const newTail = new Node(tailVal);
+        if (!this.head) {
+            this.head = newTail;
+            return newTail;
+        } 
+        let current = this.head;
+        while(current) {
+            current = current.next;
+        }
+        current.next = newTail;
+    }
+
+    print() {
+        let current = this.head;
+        while (current) {
+            console.log(current.val);
+            current = current.next;
+        }
+    }
+    
 }
 
 const LL = new LinkedList();
-const node1 = new Node(1);
-
-LL.head = node1;
-
-console.log(LL.head.val);
+console.log(LL); //undef
+LL.addToHead(3)
+LL.addToHead(2)
+LL.addToHead(1)
+console.log(LL);
+LL.print();
