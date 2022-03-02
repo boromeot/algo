@@ -34,13 +34,15 @@ class LinkedList {
         this.tail = newTail;
         return newTail;
     }
+
+    removeHead() {
+        if (this.head) {
+            const oldHead = this.head;
+            this.head = this.head.next;
+            return oldHead;
+        }
+    }
 }
 
 const ll = new LinkedList();
-console.log(ll);
-ll.addToHead(3);
-ll.addToHead(2);
-ll.addToHead(1);
-console.log(ll);
-ll.addToTail(4);
-console.log(ll);
+console.log(ll.removeHead());
