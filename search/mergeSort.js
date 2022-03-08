@@ -57,3 +57,15 @@ function mergeSort2(arr) {
 
 let unsorted2 = [6, 3, 2, 5];
 console.log(mergeSort2(unsorted2));
+
+function merge3(larr, rarr) {
+    let arr = [];
+    while (larr.length && rarr.length) {
+        if (larr[0] <= rarr[0]) {
+            arr.push(larr.shift());
+        } else {
+            arr.push(rarr.shift());
+        }
+    }
+    return [...arr, larr, rarr];
+}
